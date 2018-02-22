@@ -1,20 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
+import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
+
 @Component({
   selector: 'app-subcontent',
   templateUrl: './subcontent.component.html',
   styleUrls: ['./subcontent.component.css']
 })
 export class SubcontentComponent implements OnInit {
-  public id:number=0;
+  data = [];
   constructor(
-    private route: ActivatedRoute,) { }
+    private route: ActivatedRoute,
+    private http: HttpClient ) { }
 
   ngOnInit() {
 
+    this.http.get('/assets/data/data.json').subscribe( data => {
+      this.data = data['array'];
+    });
 
-    this.id = this.route.snapshot.paramMap.get('id');
   }
-
 }

@@ -10,7 +10,9 @@
     </div>
 </header>
 <a href="#menu" class="navPanelToggle"><span class="fa fa-bars"></span></a>
-<div class="clearfix"></div><br><br>
-<h1>
-  {{ id }}
+<div class="clearfix"></div><br><br><br><br><br>
+<h1 *ngIf = "data && data.length>0">
+    <div *ngFor="let joke of data">
+        {{ joke }}
+    </div>
 </h1>
